@@ -7,6 +7,7 @@ set -e
 REPO="GabryXnLab/git-sync-kde-releases"
 INSTALL_DIR="$HOME/.local/bin"
 AUTOSTART_DIR="$HOME/.config/autostart"
+APPS_DIR="$HOME/.local/share/applications"
 BINARY_NAME="gitsync-kde"
 BINARY_PATH="$INSTALL_DIR/$BINARY_NAME"
 
@@ -42,11 +43,8 @@ chmod +x "$BINARY_PATH"
 
 echo "Binario installato in: $BINARY_PATH"
 
-# Autostart KDE / GNOME
-echo "Configurazione avvio automatico..."
-mkdir -p "$AUTOSTART_DIR"
-cat > "$AUTOSTART_DIR/git-sync-kde.desktop" << EOF
-[Desktop Entry]
+# Desktop entry condiviso
+DESKTOP_CONTENT="[Desktop Entry]
 Name=GitSync KDE
 Comment=Monitor Sincronizzazione Repository Git
 Exec=$BINARY_PATH
@@ -56,10 +54,19 @@ Type=Application
 Categories=Development;
 StartupNotify=false
 X-GNOME-Autostart-enabled=true
-X-KDE-autostart-after=panel
-EOF
+X-KDE-autostart-after=panel"
 
+# Autostart KDE / GNOME
+echo "Configurazione avvio automatico..."
+mkdir -p "$AUTOSTART_DIR"
+echo "$DESKTOP_CONTENT" > "$AUTOSTART_DIR/git-sync-kde.desktop"
 chmod 644 "$AUTOSTART_DIR/git-sync-kde.desktop"
+
+# Voce nel launcher applicazioni
+mkdir -p "$APPS_DIR"
+echo "$DESKTOP_CONTENT" > "$APPS_DIR/git-sync-kde.desktop"
+chmod 644 "$APPS_DIR/git-sync-kde.desktop"
+update-desktop-database "$APPS_DIR" 2>/dev/null || true
 
 # PATH hint
 if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
@@ -72,4 +79,4 @@ fi
 echo ""
 echo "✓ GitSync KDE $LATEST installato con successo!"
 echo "  Avvia subito con: $BINARY_PATH"
-echo "  Oppure effettua il logout/login per l'avvio automatico."
+echo "  Oppure cerca 'GitSync' nel launcher applicazioni."
