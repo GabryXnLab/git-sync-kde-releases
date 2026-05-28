@@ -1,8 +1,8 @@
 {
-  "version": "1.0.7",
-  "tag": "v1.0.7",
-  "linux_url": "https://github.com/GabryXnLab/git-sync-kde-releases/releases/download/v1.0.7/gitsync-kde",
-  "windows_url": "https://github.com/GabryXnLab/git-sync-kde-releases/releases/download/v1.0.7/gitsync-kde.exe",
-  "published_at": "2026-05-28T20:08:45Z",
-  "release_notes": "Versione 1.0.7 — aggiornamento automatico."
+  "version": "1.0.8",
+  "tag": "v1.0.8",
+  "linux_url": "https://github.com/GabryXnLab/git-sync-kde-releases/releases/download/v1.0.8/gitsync-kde",
+  "windows_url": "https://github.com/GabryXnLab/git-sync-kde-releases/releases/download/v1.0.8/gitsync-kde.exe",
+  "published_at": "2026-05-28T20:44:32Z",
+  "release_notes": "Versione 1.0.8 — aggiornamento automatico."
 }
